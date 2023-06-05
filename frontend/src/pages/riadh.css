@@ -1,0 +1,22 @@
+*{
+   
+
+
+}
+
+.cardd {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: beige;
+    width: 100%;
+    height: 50%;
+    
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 20px;
+  }
