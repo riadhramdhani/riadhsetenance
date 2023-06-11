@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Edit({service}) {
     const [show, setShow] = useState(false);
+    // const [data, setData] = useState({ title: "", img_url: "", vedio_url: "",phone_number:"" , adresse:"", description:"", rate:""});
     const [data, setData] = useState({ title: service.title,img_url:service.img_url,vedio_url:service.vedio_url,phone_number:service.phone_number,
       adresse:service.adresse,description:service.description,rate:Number(service.rate),createdAt:service.createdAt});
     // const servic= useSelector((state)=> state.services.service)
@@ -42,14 +43,27 @@ function Edit({service}) {
   //   navigate("/cardservice")
   // };
   //function update
-  const handleEdit = () => {
+  const handleEdit = (id) => {
     // e.preventDefault();
-    const serviceupdate={
-      id: service._id,
-      data
-    }
-    dispatch(update_service(serviceupdate),handleClose());
+    // const serviceupdate={
+    //   id: service._id,
+    //   data
+    // }
+    dispatch(update_service({id,data}))
+   
+    setData({
+      title: '',
+      img_url: '',
+      vedio_url:'',
+      description: '',
+      adresse: '',
+      phone_number: '',
+      rate:''
+    });
     dispatch(get_services())
+    
+    
+    
   };
 
 
@@ -128,7 +142,7 @@ function Edit({service}) {
             adresse:data.adresse,description:data.description,rate:Number(data.rate),createdAt:service.createdAt})}> */}
            {/* Edit
           </Button> */}
-          <Button variant="warning" onClick={()=>handleEdit(service._id)}>
+          <Button variant="warning" onClick={()=>handleEdit(service?._id)}>
             Edit
           </Button>
          

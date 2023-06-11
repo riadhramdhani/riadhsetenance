@@ -76,10 +76,12 @@ function Cardservice({service}) {
        )
        .map((service) => (
         <div key={service?._id} >
-          <h4>{service?.userId.username}</h4>
+          
     <div  >
-      <Card>
-    <Card.Img variant="top" src={service?.img_url} />
+    
+      <Card style={{width:"80%"}}>
+      <h4>{service?.userId.username}</h4>
+    <Card.Img variant="top" style={{width:"30%"}} src={service?.img_url} />
 
     <Card.Body>
       <Card.Title>{service?.title}</Card.Title>
@@ -89,8 +91,8 @@ function Cardservice({service}) {
       <Card.Text>{service?.phone_number} </Card.Text>
       <Card.Text>{service?.description} </Card.Text>
     </Card.Body>
-    <Edit service={service}/> 
-    <Button variant="danger" onClick={()=>handleDelete(service?._id)}>Delete</Button>
+    <Edit  service={service}/> 
+    <Button variant="danger" style={{width:"40%"}} onClick={()=>handleDelete(service?._id)}>Delete</Button>
     </Card>
    </div>
   

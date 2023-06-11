@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/authSlice';
 
 
-function Login() {
+function Login({user}) {
   const [data, setData] = useState({  email: "", password: "" });
-  const user = useSelector((state) => state.auth.user);
+  const userr = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,10 +25,10 @@ function Login() {
   };
 
   useEffect(() => {
-    if (user) {
+    if (userr) {
       navigate("/profile");
     }
-  }, [user, navigate]);
+  }, [userr, navigate]);
 
 
   return (
@@ -48,6 +48,7 @@ function Login() {
     <Form.Group className="mb-3" controlId="formBasicCheckbox">
      
     </Form.Group>
+   
     <Button variant="primary" type="submit">
       Login
     </Button>

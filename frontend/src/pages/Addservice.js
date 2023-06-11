@@ -8,7 +8,7 @@ import { add_services } from '../redux/serviceSlice';
 
 function Addservice() {
     const [data, setData] = useState({ title: "", img_url: "", vedio_url: "",phone_number:"" , adresse:"", description:"", rate:""});
-    const user = useSelector((state) => state.auth.user);
+    const profession = useSelector((state) => state.auth.user.profession);
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleChange = (e) => {
@@ -19,8 +19,12 @@ function Addservice() {
       const handleAdd = (e) => {
         e.preventDefault();
         // if (user && user.profession === "worker"){
+          if (profession === "worker"){
         dispatch(add_services({title:data.title,img_url:data.img_url,vedio_url:data.vedio_url,phone_number:data.phone_number,
-        adresse:data.adresse,description:data.description,rate:Number(data.rate)}));
+        adresse:data.adresse,description:data.description,rate:Number(data.rate)}));}
+        else { 
+          window.alert("You are not authorizetied ?")
+        }
         navigate("/cardservice")
         // }
         // else {

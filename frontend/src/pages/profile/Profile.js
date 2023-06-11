@@ -8,6 +8,10 @@ import axios from"axios"
 import { toast } from "react-toastify";
 import Cardchat from "../../component/Cardchat"
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import { Form } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
+
+
 
 
 
@@ -17,6 +21,13 @@ function Profile() {
   const user = useSelector((state) => state.auth.user);
   const[file,setFile]=useState("")
   const dispatch = useDispatch()
+  // const location = useLocation();
+  // const { profession } = location.state;
+  // const [profession, setProfession] = useState('');
+
+  // const handleChange = (event) => {
+  //   setProfession(event.target.value);
+  // };
 
   const handleEdit= async(e)=>{
     e.preventDefault()
@@ -32,9 +43,9 @@ function Profile() {
       toast.error(error.msg)
     }
   }
-  if (!user) {
-    return <p>Loading...</p>;
-  }
+  // if (!user) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <div className="gradient-custom-2" style={{ backgroundColor: '#9de2ff' }}>
@@ -65,14 +76,18 @@ function Profile() {
                 <div className="ms-3" style={{ marginTop: '130px' }}>
                   <MDBTypography tag="h5">my profile</MDBTypography>
                   <MDBCardText> <p>
-        <strong>Username:</strong> {user.username}
+        <strong>Username:</strong> {user?.username}
       </p>
       <p>
-        <strong>Email:</strong> {user.email}
+        <strong>Email:</strong> {user?.email}
       </p>
-      <p>
-        <strong>Profession:</strong> {user.profession}
-      </p></MDBCardText>
+     
+      <p>Profession : {user?.profession}</p>
+      
+      
+    
+      
+      </MDBCardText>
                 </div>
               </div>
               <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>

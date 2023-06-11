@@ -5,12 +5,15 @@ import '../App.css'
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../redux/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
 
 
 
-function Register() {
+
+function Register({user}) {
   const [data, setData] = useState({ username: "", email: "", password: "",profession:"" });
-  const user = useSelector((state) => state.auth.user);
+  const userr = useSelector((state) => state.auth.user);
+ 
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,10 +28,10 @@ function Register() {
   };
 
   useEffect(() => {
-    if (user) {
+    if (userr) {
       navigate("/profile");
     }
-  }, [user, navigate]);
+  }, [userr, navigate]);
   return (
     <div><Form id='re' onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -55,13 +55,19 @@ const initialState = {
       }
     }
   );
+  // const res = await axios.put(`http://localhost:7000/api/service/updateservice/${id}`,data);
+  // return res.data;
+  
   //update service
   export const update_service = createAsyncThunk(
+
     "/service/update_service",
-    async (id, data,{ rejectWithValue }) => {
+    async({id,data},{ rejectWithValue }) => {
+
       const config={
         headers:{authorization:localStorage.getItem("token")}
       }
+      
       try {
         const res = await axios.put(`http://localhost:7000/api/service/updateservice/${id}`,data,config);
         return res.data;
@@ -116,8 +122,9 @@ const initialState = {
           state.loading = true;
         })
         .addCase(get_services.fulfilled, (state, { payload }) => {
-          state.services = payload.services;
-          state.service= payload.service
+          state.services = payload.services
+          // state.service= payload.service
+          // state.service=payload.serviceupdate
           state.auth = true;
           state.loading = false
           toast.success(payload.msg)
@@ -170,11 +177,12 @@ const initialState = {
           state.loading = true;
         })
         .addCase(update_service.fulfilled, (state, { payload }) => {
-          state.services = payload.services;
-          state.service= payload.serviceupdate
+          state.services = payload.services
+          state.service= payload.serviceupdate;
           state.auth = true;
           state.loading = false
-          state.edit = true;
+          toast.success(payload.msg)
+          // state.edit = true;
           toast.success(payload.msg)
         // .addCase(update_service.fulfilled, (state, action) => {
         //   const serviceupdate = action.payload;
