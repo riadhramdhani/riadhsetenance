@@ -51,6 +51,7 @@ exports.deleteservice = async(req,res)=>{
     }
 }
 exports.updateservice = async(req,res)=>{
+
     const{id}=req.params
     try { const serviceupdate = await Service.findByIdAndUpdate(id,{$set:{...req.body}},{new:true})
     res.status(200).json({msg:"service updated",serviceupdate})
